@@ -11,7 +11,7 @@
  	<ul>
  	{% for p in products %}
  		<li>
- 			{{p.excurtion.name}} | {{p.precio_estimado}} <br />
+ 			<a href="/products/{{p.id}}"> {{p.excurtion.name}}</a> | {{p.precio_estimado}} <br />
  		</li>	
  	{% endfor %}
  	</ul>

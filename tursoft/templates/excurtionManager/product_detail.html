@@ -1,0 +1,70 @@
+{% extends 'base.html' %}}
+{% block modulo_tablero %}
+	<h1> detalle de excursion contratada </h1>
+{% endblock %}
+{% block content %}
+	
+		<div class="title_panel">
+			<h4> datos principales </h4>
+		</div>
+		<div class="title_panel">
+			<h4> datos economicos </h4>
+		</div>
+		<div class="clear"> </div>
+		<div class="panel">
+			<p> Nombre: {{ object.excurtion.name }} </p>
+			<p> Pais: {{ object.excurtion.study.country.name }} </p>
+			<p> Region: {{ object.excurtion.study.region.name }} </p>
+			<p> Provincia: {{ object.excurtion.study.distrit.name }} </p>
+			<p> Cantidad de Participantes: {{ object.get_amount_competitors }} </p>
+			<p> Desde: {{ object.excurtion.date_from }} </p>
+			<p> Hasta: {{ object.excurtion.date_to }} </p>
+			<p> Cantidad Minima de Participantes: {{ object.excurtion.min_amount }} </p>
+			<p> Alta Montania: {{ object.excurtion.study.high_land }} </p>
+		</div>
+		
+		<div class="panel">
+			<div class="col">
+				<p> Precio: </p>
+				<p> Precio Estimado: {{ object.precio_estimado }} </p>
+				<p> Subtotal: {{ object.subtotal }} </p>
+				<p> Subtotal de Participantes: {{ object.subtotal_participantes }}</p>
+				<p> Subtotal de Organizacion: {{ object.subtotal_organization }}</p>
+				<p> Subtotal de Comida para Participantes: {{ object.subtotal_comida_participante }} </p>
+				<p> Subtotal de Comida para Organizacion: {{ object.subtotal_comida_organization }}</p>
+				<p> Facturacion: {{ object.facturacion }}</p>
+				<p> Gastos: {{ object.gastos }}</p>
+			</div>
+			<div class="col">
+				<p> Costo Directo Grupal: {{ object.costo_directo_grupal }} </p>
+				<p> Costo Directo Individual:  {{ object.costo_directo_individual }}</p>
+				<p> Costo Indirecto Grupal: {{ object.costo_indirecto_grupal }}</p>
+				<p> Costo Indirecto Individual: {{ object.costo_indirecto_individual }}</p>
+				<p> Costo Final Grupal: {{ object.costo_final_grupal }}</p>
+				<p> Costo Final Individual: {{ object.costo_final_individual }}</p>
+				<p> Utilidad: {{ object.utilidad }}</p>
+				<p> Utilidad por Participante: {{ object.utilidad_por_participante }}</p>
+				<p> Utilidad mas Guiada:  </p>
+				<form action="" method=POST> {% csrf_token %} Ganancia: <input type="text" value="" id="ganancia" /> <input type="submit" value="cotizar" /> </form>
+			</div>
+			<div class="clear"> </div>
+		</div>
+		<div style="clear:right;"> </div>
+		<div class="title_panel">
+			<h4> datos de la excursion </h4>
+		</div>
+		<div class="title_panel">
+			<h4> participantes </h4>
+		</div>
+		<div class="clear"> </div>
+		<div class="panel">
+			<p> Descripcion: {{ object.description }} </p>
+			<p> Servicios Incluidos: {{ object.include_services }} </p>
+			<p> Servicios No Incluidos: {{ object.not_include_services }} </p>
+		</div>
+		<div class="panel">
+			datos de clientes
+		</div>
+		<div class="clear"> </div>
+	
+{% endblock %}

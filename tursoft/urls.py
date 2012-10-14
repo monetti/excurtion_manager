@@ -29,6 +29,10 @@ notification_list = {
                 'allow_empty':True,
                 }
 
+product_detail = {
+                  'queryset':Product.objects.all(),
+                  }
+
 
 urlpatterns = patterns('',
     # Examples:
@@ -48,7 +52,7 @@ urlpatterns = patterns('',
     url(r'^clients/$', list_detail.object_list, client_list),
     url(r'^notifications/$', list_detail.object_list, notification_list),
     
-    url(r'^products/(?P<id>\w+)$', 'excurtionManager.views.detail_product'),
+    (r'^products/(?P<object_id>\d+)/$', 'django.views.generic.list_detail.object_detail', product_detail)
 )
 
 if settings.DEBUG:

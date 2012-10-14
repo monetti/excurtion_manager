@@ -194,7 +194,7 @@ class Product(models.Model):
         return total
     
     def get_amount_competitors(self):
-        return len(self.competitors_set.all())
+        return len(self.competitors.all())
     
     def precio_estimado(self):
         return self.subtotal() * ((self.percentage/100.0)+1)
