@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+	<div id="login">
+	<div id="login_layout_title">
+		<h3> Inicie Sesion </h3> 
+	</div>
+	<div id="user_pass_layout">
+		<form action="/login" method=POST>
+		{% csrf_token %}
+			<div id="login_user_layout"><label for="user"> Usuario </label> <input type="text" id="user" value="" /></div>  
+			<div id="login_pass_layout"><label for="pass"> Contraseña </label> <input type="text" id="pass" value="" /></div>
+			<input type="button" value="Entrar">
+		</form>
+	</div>
+	<p> No tenes una cuenta? Hacete una gratis por un mes <a href="/register"> aqui </a></p> 
+	</div>
+{% endblock %}

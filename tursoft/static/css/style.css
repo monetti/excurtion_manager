@@ -1,0 +1,119 @@
+a {
+	text-decoration:none;
+}
+
+
+#header,#bottom,#content {
+	margin:auto;
+}
+
+#header,#bottom {
+	height:50px;
+	left: 0;
+	right: 0;
+	top: 0;
+	background-color: #3B5998;
+	border-bottom: 1px solid #133783;
+	min-width: 981px;
+	font-size:40px;
+	text-align:center;
+}
+
+#header {
+	height:108px;
+}
+
+#titulo_modulo {
+	text-align:center;
+	
+}
+
+#titulo_modulo h1 {
+	font-size: 90px;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
+#content {
+	min-height:300px;
+	height:auto;
+	margin-top:10px;
+	margin-bottom:10px;
+	width:90%;
+	background-color: #F2F2F2;
+	border: 1px solid #CCC;
+}
+
+#login_layout_title {
+	background-color: #3B5998;
+	margin:auto;
+	width:50%;
+	font-size:25px;
+	color:#F5EDE7;
+	height:50px;
+}
+
+#user_pass_layout {
+	padding:5px;
+	background-color: white;
+	margin:auto;
+	margin-top:1px;
+	width:45%;
+}
+
+#login {
+	text-align:center;
+	margin:30px;
+	margin-left:auto;
+	margin-right:auto;
+	font-size:16px;
+}
+
+#login_user_layout, #login_pass_layout {
+	margin:15px;
+	
+}
+
+.panel, .title_panel {
+	width:48%;
+	border: 1px solid;
+	margin-right:10px;
+	margin-left:10px;
+	margin-top:2px;
+	padding:5px;
+	float:left;
+}
+
+.panel {
+	min-height:200px;
+	margin-bottom:5px;
+	position:relative;
+}
+
+.panel .bottom_toolbar {
+	text-align:center;
+	position:absolute;
+	left: 0;
+	right: 0;
+	bottom:0;
+	margin-bottom:5px;
+}
+
+.title_panel {
+	padding-top:0px;
+	padding-bottom:0px;
+	margin-bottom:auto;
+	background-color:#3B5998;
+	
+}
+
+.title_panel h4 {
+	font-size:35px;
+	margin:0px;
+	font-variant:small-caps;
+}
+
+.clear {
+	clear:both;
+}
+
