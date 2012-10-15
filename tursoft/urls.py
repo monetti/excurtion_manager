@@ -2,8 +2,11 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.views.generic import list_detail
 from excurtionManager.models import Product, Excurtion, Client, Notification
+
 from tursoft import settings
 import datetime
+from excurtionManager.forms import ProductQuotationForm
+
 
 # Uncomment the next two lines to enable the admin:
 admin.autodiscover()
@@ -31,6 +34,7 @@ notification_list = {
 
 product_detail = {
                   'queryset':Product.objects.all(),
+                  'extra_context':{'form_product_quotation':ProductQuotationForm()}
                   }
 
 
@@ -52,7 +56,10 @@ urlpatterns = patterns('',
     url(r'^clients/$', list_detail.object_list, client_list),
     url(r'^notifications/$', list_detail.object_list, notification_list),
     
-    (r'^products/(?P<object_id>\d+)/$', 'django.views.generic.list_detail.object_detail', product_detail)
+    (r'^products/(?P<object_id>\d+)/$', 'django.views.generic.list_detail.object_detail', product_detail),
+    (r'^products/quote/(?P<id>\d+)/$', 'excurtionManager.views.cotizar'),
+    (r'^product_quotation/add$', 'excurtionManager.views.product_quotation_add_to_product'),
+    
 )
 
 if settings.DEBUG:

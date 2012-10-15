@@ -11,7 +11,7 @@
  	<ul>
  	{% for p in products %}
  		<li>
- 			<a href="/products/{{p.id}}"> {{p.excurtion.name}}</a> | {{p.precio_estimado}} <br />
+ 			{{ p.excurtion.study.region.name }} | {{ p.excurtion.study.country.name}} | {{p.excurtion.name}} | {{p.excurtion.date_from }} | <a href=""> borrar </a> | <a href=""> editar </a> | <a href="/products/{{p.id}}"> ver </a>  
  		</li>	
  	{% endfor %}
  	</ul>
@@ -22,7 +22,7 @@
  	<ul>
  	{% for e in excurtions %}
  		<li>
- 			{{e.name}} | {{e.date_from}} | {{ date_to }} <br />
+ 			{{e.name}} | {{e.date_from}} | {{ date_to }} | <a href=""> borrar </a> | <a href=""> editar </a> | <a href="/products/{{p.id}}"> ver </a> 
  		</li>	
  	{% endfor %}
  	</ul>
@@ -37,7 +37,7 @@
  	<ul>
  	{% for c in clients %}
  		<li>
- 		{{c.name}} | {{c.last_name}} <br />
+ 		{{c.name}} | {{c.last_name}} | {{c.email}} | <a href="/clients/{{c.id}}"> ver </a> | <a href=""> borrar </a> | <a href=""> editar </a> | <a href=""> enviar email </a>   
  		</li>	
  	{% endfor %}
  	</ul>

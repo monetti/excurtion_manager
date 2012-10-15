@@ -1,17 +1,17 @@
-{% extends 'base.html' %}}
+{% extends 'base.html' %}
+
 {% block modulo_tablero %}
 	<h1> detalle de excursion contratada </h1>
 {% endblock %}
 {% block content %}
-	
-		<div class="title_panel">
+		<div class="title_panel principales">
 			<h4> datos principales </h4>
 		</div>
-		<div class="title_panel">
+		<div class="title_panel economicos">
 			<h4> datos economicos </h4>
 		</div>
 		<div class="clear"> </div>
-		<div class="panel">
+		<div class="panel principales">
 			<p> Nombre: {{ object.excurtion.name }} </p>
 			<p> Pais: {{ object.excurtion.study.country.name }} </p>
 			<p> Region: {{ object.excurtion.study.region.name }} </p>
@@ -23,29 +23,56 @@
 			<p> Alta Montania: {{ object.excurtion.study.high_land }} </p>
 		</div>
 		
-		<div class="panel">
+		<div class="panel economicos">
 			<div class="col">
-				<p> Precio: </p>
-				<p> Precio Estimado: {{ object.precio_estimado }} </p>
-				<p> Subtotal: {{ object.subtotal }} </p>
-				<p> Subtotal de Participantes: {{ object.subtotal_participantes }}</p>
-				<p> Subtotal de Organizacion: {{ object.subtotal_organization }}</p>
-				<p> Subtotal de Comida para Participantes: {{ object.subtotal_comida_participante }} </p>
-				<p> Subtotal de Comida para Organizacion: {{ object.subtotal_comida_organization }}</p>
-				<p> Facturacion: {{ object.facturacion }}</p>
-				<p> Gastos: {{ object.gastos }}</p>
+				<!--<p> Precio: </p>-->
+				<p> Precio ${{ object.price }} </p>
+				<p> Subtotal: ${{ object.subtotal }} </p>
+				<p> Subtotal de Participantes: ${{ object.subtotal_participantes }}</p>
+				<p> Subtotal de Organizacion: ${{ object.subtotal_organization }}</p>
+				<p> Subtotal de Comida para Participantes: ${{ object.subtotal_comida_participante }} </p>
+				<p> Subtotal de Comida para Organizacion: ${{ object.subtotal_comida_organization }}</p>
+				<p> Facturacion: ${{ object.facturacion }}</p>
+				<p> Gastos: ${{ object.gastos }}</p>
+				<p> Porcentaje de Ganancia: {{ object.percentage }}%</p>
 			</div>
 			<div class="col">
-				<p> Costo Directo Grupal: {{ object.costo_directo_grupal }} </p>
-				<p> Costo Directo Individual:  {{ object.costo_directo_individual }}</p>
-				<p> Costo Indirecto Grupal: {{ object.costo_indirecto_grupal }}</p>
-				<p> Costo Indirecto Individual: {{ object.costo_indirecto_individual }}</p>
-				<p> Costo Final Grupal: {{ object.costo_final_grupal }}</p>
-				<p> Costo Final Individual: {{ object.costo_final_individual }}</p>
-				<p> Utilidad: {{ object.utilidad }}</p>
-				<p> Utilidad por Participante: {{ object.utilidad_por_participante }}</p>
-				<p> Utilidad mas Guiada:  </p>
-				<form action="" method=POST> {% csrf_token %} Ganancia: <input type="text" value="" id="ganancia" /> <input type="submit" value="cotizar" /> </form>
+				<p> Costo Directo Grupal: ${{ object.costo_directo_grupal }} </p>
+				<p> Costo Directo Individual: ${{ object.costo_directo_individual }}</p>
+				<p> Costo Indirecto Grupal: ${{ object.costo_indirecto_grupal }}</p>
+				<p> Costo Indirecto Individual: ${{ object.costo_indirecto_individual }}</p>
+				<p> Costo Final Grupal: ${{ object.costo_final_grupal }}</p>
+				<p> Costo Final Individual: ${{ object.costo_final_individual }}</p>
+				<p> Utilidad: ${{ object.utilidad }}</p>
+				<p> Utilidad por Participante: ${{ object.utilidad_por_participante }}</p>
+				<p> Utilidad mas Guiada: $ </p>
+			</div>
+			<div class="col">
+				 
+					
+					<h2> Cotizador </h2> 
+					<menu>
+        				<a href="#add-product-quotation-form" class="control">Agregar Cotizacion</a>
+      				</menu>
+      				<form id="add-product-quotation-form" method="post" action="/product_quotation/add" class="{{form.errors|yesno:'errors,valid'}}" enctype="multipart/form-data">
+      				{% csrf_token %}
+          					<input type="hidden" name="id_product" id="id_product" value="{{object.id}}" />
+            				{{ form_product_quotation.as_p }}
+          					<a href="#add-product-quotation-form" class="control">cerrar</a>   
+          					<input type="submit" name="Guardar" value="Agregar"/>
+      				</form>
+				   
+					<ul>
+						{% for obj in object.product_quotation.all %}
+							<li>{{obj}} | <a href=""> editar </a> | <a href=""> borrar </a></li> 								
+						{% endfor %}
+					</ul>
+				<form action="/products/quote/{{object.id}}/" method="POST">
+				{% csrf_token %}	
+					<p> Ganancia: <input type="text" value="" name="ganancia" id="ganancia" /> </p>
+					<p> Precio: <input type="text" value="" name="precio" id="precio" /> </p>
+					<input type="submit" value="cotizar" name="cotizar"/> 
+				</form>
 			</div>
 			<div class="clear"> </div>
 		</div>
