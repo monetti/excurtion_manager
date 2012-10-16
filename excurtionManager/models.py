@@ -50,7 +50,7 @@ class ProductQuotation(models.Model):
     created = models.DateField(auto_now=True, editable=False)
     
     def __str__(self):
-        return self.issue.name + " - " + str(self.amount) + " - " + str(self.price) + " - " + ("Participante", "Organizacion")[not self.organization] 
+        return self.issue.name + " - " + str(self.amount) + " - " + str(self.price) + " - " + ("Participante", "Organizacion")[self.organization] 
     
 class Distrit(models.Model):
     name = models.CharField("Nombre",max_length=50)

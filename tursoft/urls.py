@@ -37,6 +37,16 @@ product_detail = {
                   'extra_context':{'form_product_quotation':ProductQuotationForm()}
                   }
 
+client_detail = {
+                  'queryset':Client.objects.all(),
+                  
+                  }
+
+excurtion_detail = {
+                  'queryset':Excurtion.objects.all(),
+                  
+                  }
+
 
 urlpatterns = patterns('',
     # Examples:
@@ -59,6 +69,14 @@ urlpatterns = patterns('',
     (r'^products/(?P<object_id>\d+)/$', 'django.views.generic.list_detail.object_detail', product_detail),
     (r'^products/quote/(?P<id>\d+)/$', 'excurtionManager.views.cotizar'),
     (r'^product_quotation/add$', 'excurtionManager.views.product_quotation_add_to_product'),
+    
+    (r'^clients/(?P<object_id>\d+)/$', 'django.views.generic.list_detail.object_detail', client_detail),
+    
+    (r'^excurtions/(?P<object_id>\d+)/$', 'django.views.generic.list_detail.object_detail', excurtion_detail),
+    (r'^excurtions/(?P<id>\w+)/delete$', 'delete', {'model':Excurtion}),
+    (r'^excurtions/(?P<id>\w+)/send_email$', 'send_email', {'model':Product}),
+    
+    
     
 )
 

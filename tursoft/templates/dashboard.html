@@ -22,7 +22,7 @@
  	<ul>
  	{% for e in excurtions %}
  		<li>
- 			{{e.name}} | {{e.date_from}} | {{ date_to }} | <a href=""> borrar </a> | <a href=""> editar </a> | <a href="/products/{{p.id}}"> ver </a> 
+ 			{{e.name}} | {{e.date_from}} | {{ date_to }} | <a href="/excurtions/{{e.id}}/delete"> borrar </a> | <a href=""> editar </a> | <a href="/excurtions/{{p.id}}"> ver </a> 
  		</li>	
  	{% endfor %}
  	</ul>
