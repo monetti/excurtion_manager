@@ -35,8 +35,8 @@
 				<p> Subtotal: ${{ object.subtotal }} </p>
 				<p> Subtotal de Participantes: ${{ object.subtotal_participantes }}</p>
 				<p> Subtotal de Organizacion: ${{ object.subtotal_organization }}</p>
-				<p> Subtotal de Comida para Participantes: ${{ object.subtotal_comida_participante }} </p>
-				<p> Subtotal de Comida para Organizacion: ${{ object.subtotal_comida_organization }}</p>
+				<p> Subtotal (Comida) de Participantes: ${{ object.subtotal_comida_participantes }} </p>
+				<p> Subtotal (Comida) de Organizacion: ${{ object.subtotal_comida_organizacion }}</p>
 				<p> Facturacion: ${{ object.facturacion }}</p>
 				<p> Gastos: ${{ object.gastos }}</p>
 				<p> Porcentaje de Ganancia: {{ object.percentage }}%</p>
@@ -53,7 +53,6 @@
 				<p> Utilidad mas Guiada: $ </p>
 			</div>
 			<div class="col">
-				 
 					
 					<h2> Cotizador </h2> 
 					<menu>
@@ -90,12 +89,16 @@
 		</div>
 		<div class="clear"> </div>
 		<div class="panel">
-			<p> Descripcion: {{ object.description }} </p>
-			<p> Servicios Incluidos: {{ object.include_services }} </p>
-			<p> Servicios No Incluidos: {{ object.not_include_services }} </p>
+			<p> Descripcion: {{ object.excurtion.description }} </p>
+			<p> Servicios Incluidos: {{ object.excurtion.include_services }} </p>
+			<p> Servicios No Incluidos: {{ object.excurtion.not_include_services }} </p>
 		</div>
 		<div class="panel">
-			datos de clientes
+			<ul>
+				{% for obj in object.competitors.all %}
+					<li>{{obj}} | <a href=""> editar </a> | <a href=""> borrar </a> <a href="/clients/{{obj.id}}" TARGET="_blank"> ver </a></li>  								
+				{% endfor %}
+			</ul>
 		</div>
 		<div class="clear"> </div>
 	

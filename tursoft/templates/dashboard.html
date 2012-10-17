@@ -4,7 +4,7 @@
 {% endblock %}
   
 {% block content %}
-<div>[<a href="/admin" blank="true"><<< administrador de datos >>></a>] | [<a href="/admin/logout/"><<< salir de la sesion >>></a>]</div> 
+<div>[<a href="/admin" TARGET='_blank'><<< administrador de datos >>></a>] | [<a href="/admin/logout/"><<< salir de la sesion >>></a>]</div> 
  <div class="title_panel"><h4> excursiones contratadas </h4></div>
  <div class="title_panel"><h4> excursiones </h4></div>
  <div class="clear"></div>
@@ -12,7 +12,7 @@
  	<ul>
  	{% for p in products %}
  		<li>
- 			{{ p.excurtion.study.region.name }} | {{ p.excurtion.study.country.name}} | {{p.excurtion.name}} | {{p.excurtion.date_from }} | <a href=""> borrar </a> | <a href=""> editar </a> | <a href="/products/{{p.id}}"> ver </a>  
+ 			{{ p.excurtion.study.region.name }} | {{ p.excurtion.study.country.name}} | {{p.excurtion.name}} | {{p.excurtion.date_from }} | <a href=""> borrar </a> | <a href=""> editar </a> | <a href="/products/{{p.id}}" TARGET='_blank'> ver </a>  
  		</li>	
  	{% endfor %}
  	</ul>
@@ -23,7 +23,7 @@
  	<ul>
  	{% for e in excurtions %}
  		<li>
- 			{{e.name}} | {{e.date_from}} | {{ date_to }} | <a href="/excurtions/{{e.id}}/delete"> borrar </a> | <a href=""> editar </a> | <a href="/excurtions/{{p.id}}"> ver </a> 
+ 			{{e.name}} | {{e.date_from}} | {{ date_to }} | <a href="/excurtions/{{e.id}}/delete"> borrar </a> | <a href=""> editar </a> | <a href="/excurtions/{{p.id}}" TARGET='_blank'> ver </a> 
  		</li>	
  	{% endfor %}
  	</ul>
@@ -38,7 +38,7 @@
  	<ul>
  	{% for c in clients %}
  		<li>
- 		{{c.name}} | {{c.last_name}} | {{c.email}} | <a href="/clients/{{c.id}}"> ver </a> | <a href="/clients/{{c.id}}/delete"> borrar </a> | <a href=""> editar </a> | <a href=""> enviar email </a>   
+ 		{{c.name}} | {{c.last_name}} | {{c.email}} | <a href="/clients/{{c.id}}" TARGET='_blank'> ver </a> | <a href="/clients/{{c.id}}/delete"> borrar </a> | <a href=""> editar </a> | <a href=""> enviar email </a>   
  		</li>	
  	{% endfor %}
  	</ul>
