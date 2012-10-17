@@ -17,7 +17,7 @@ import os
 import sys
 import site
 
-site.addsitedir('/home/cmonetti/webapps/excurtionmanager/lib/python2.7/site-packages/')
+
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "tursoft.settings")
 
 # This application object is used by any WSGI server configured to use this

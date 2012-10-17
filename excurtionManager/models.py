@@ -128,10 +128,10 @@ class Excurtion(models.Model):
     
 class Study(gis_models.Model):
     location = gis_models.PointField("Ubicacion",blank=True,null=True)
-    distrit = models.ForeignKey("Distrit",verbose_name='Provincia',blank=True,null=True)
+    distrit = models.ForeignKey("Distrit",verbose_name='Provincia')
     access = models.TextField("Accceso", blank=True)
     map = gis_models.PolygonField("Mapa",blank=True,null=True)
-    region = models.ForeignKey('Region',verbose_name='Region',blank=True,null=True)
+    region = models.ForeignKey('Region',verbose_name='Region')
     other_features = models.TextField("Otros Atractivos", blank=True)
     circuit =  gis_models.PolygonField("Circuito",blank=True,null=True)
     pay = models.BooleanField("Pago de Arancel", blank=True)
