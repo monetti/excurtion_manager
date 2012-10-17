@@ -42,10 +42,18 @@ def product_quotation_add_to_product(request):
     return redirect("/products/"+request.POST['id_product'])
 
 
+def product_quotation_delete_from_product(request, id_product, id_quotation):
+    instance = get_object_or_404(Product, pk=id_product)
+    instance.product_quotation.remove(id_quotation)
+    instance.save()
+    return redirect("/products/"+str(instance.id))
+
 def delete(request, id, model=None):
     instance = get_object_or_404(model, pk=id)
     instance.delete()
+    
     return redirect("/")
+
 
 def send_email(request, id, model=None):
     instance = get_object_or_404(model, pk=id)

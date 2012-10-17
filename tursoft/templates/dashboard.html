@@ -2,8 +2,9 @@
 {% block modulo_tablero %}
 	<h1> tablero / modulo principal </h1>
 {% endblock %}
+  
 {% block content %}
- 
+<div>[<a href="/admin" blank="true"><<< administrador de datos >>></a>] | [<a href="/admin/logout/"><<< salir de la sesion >>></a>]</div> 
  <div class="title_panel"><h4> excursiones contratadas </h4></div>
  <div class="title_panel"><h4> excursiones </h4></div>
  <div class="clear"></div>
@@ -37,7 +38,7 @@
  	<ul>
  	{% for c in clients %}
  		<li>
- 		{{c.name}} | {{c.last_name}} | {{c.email}} | <a href="/clients/{{c.id}}"> ver </a> | <a href=""> borrar </a> | <a href=""> editar </a> | <a href=""> enviar email </a>   
+ 		{{c.name}} | {{c.last_name}} | {{c.email}} | <a href="/clients/{{c.id}}"> ver </a> | <a href="/clients/{{c.id}}/delete"> borrar </a> | <a href=""> editar </a> | <a href=""> enviar email </a>   
  		</li>	
  	{% endfor %}
  	</ul>

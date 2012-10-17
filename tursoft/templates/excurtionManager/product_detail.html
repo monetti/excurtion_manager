@@ -69,7 +69,7 @@
 				   
 					<ul>
 						{% for obj in object.product_quotation.all %}
-							<li>{{obj}} | <a href=""> editar </a> | <a href=""> borrar </a></li> 								
+							<li>{{obj}} | <a href=""> editar </a> | <a href="/product_quotation/remove/{{object.id}}/{{obj.id}}"> borrar </a></li> 								
 						{% endfor %}
 					</ul>
 				<form action="/products/quote/{{object.id}}/" method="POST">

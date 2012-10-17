@@ -1,4 +1,4 @@
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login as auth_login, authenticate
 from django.shortcuts import render
 from excurtionManager.models import Client, Product, Excurtion, Notification
 from tursoft.forms import UserForm
@@ -6,7 +6,7 @@ import datetime
 
 
 def home(request):
-    if request.user:
+    if not request.user.is_anonymous():
         return render(
                   request,
                   'dashboard.html',
@@ -27,18 +27,11 @@ def home(request):
     
 def login(request):
     user = authenticate(username=request.POST['user'], password=request.POST['pass'])
+    
     if user is not None:
-        if user.is_active:
-            login(request, user)
-            return render(
-                      request,
-                      'dashboard.html',
-                      {}
-                  )
-        else:
-            print("Your account has been disabled!")
-    else:
-        return home(request)
+            auth_login(request,user)
+       
+    return home(request)
     
 def register(request):
     

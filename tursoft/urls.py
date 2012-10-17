@@ -61,6 +61,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     
     (r'^tinymce/', include('tinymce.urls')),
+    
     url(r'^products/$', list_detail.object_list, product_list),
     url(r'^excurtions/$', list_detail.object_list, excurtion_list),
     url(r'^clients/$', list_detail.object_list, client_list),
@@ -69,7 +70,9 @@ urlpatterns = patterns('',
     (r'^products/(?P<object_id>\d+)/$', 'django.views.generic.list_detail.object_detail', product_detail),
     (r'^products/quote/(?P<id>\d+)/$', 'excurtionManager.views.cotizar'),
     (r'^product_quotation/add$', 'excurtionManager.views.product_quotation_add_to_product'),
+    (r'^product_quotation/remove/(?P<id_product>\d+)/(?P<id_quotation>\d+)/$', 'excurtionManager.views.product_quotation_delete_from_product'),
     
+    (r'^clients/(?P<id>\w+)/delete$', 'delete', {'model':Client}),
     (r'^clients/(?P<object_id>\d+)/$', 'django.views.generic.list_detail.object_detail', client_detail),
     
     (r'^excurtions/(?P<object_id>\d+)/$', 'django.views.generic.list_detail.object_detail', excurtion_detail),
