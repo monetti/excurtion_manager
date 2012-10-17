@@ -19,7 +19,7 @@ class TechnicNote(models.Model):
     high_land = models.BooleanField("Alta Montania",blank=True)
     
     def __str__(self):
-        return self.name
+        return self.name + ' - ' + ("ALTA MONTANIA","")[self.high_land] 
     
     def __unicode__(self):
         return self.name
@@ -189,8 +189,10 @@ class Product(models.Model):
         cotizaciones = self.product_quotation.values()
         total = 0.0
         for c in cotizaciones:
-            if c.issue.type == 'Honorarios':
-                    total += c['price'] * c['amount']
+            issue = Issue.objects.get(pk=c['issue_id'])
+            if issue.type == u'CO':
+                total += c['price'] * c['amount']
+                
         return total
     
     def get_amount_competitors(self):
@@ -224,7 +226,8 @@ class Product(models.Model):
         total = 0.0
         for c in cotizaciones:
             if c['organization']:
-                if c.issue.type == 'Comida':
+                issue = Issue.objects.get(pk=c['issue_id'])
+                if issue.type == u'CO':
                     total += c['price'] * c['amount']
         return total
     
@@ -233,7 +236,8 @@ class Product(models.Model):
         total = 0.0
         for c in cotizaciones:
             if not c['organization']:
-                if c.issue.type == 'Comida':
+                issue = Issue.objects.get(pk=c['issue_id'])
+                if issue.type == u'CO':
                     total += c['price'] * c['amount']
         return total
     

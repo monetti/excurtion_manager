@@ -71,6 +71,7 @@ class StudyAdmin(geo_admin.OSMGeoAdmin):
     fields = (('distrit','region'),('access','other_features','circuit'),('location','map'),('pay','amount_pay','vhf'),('available_from','available_to','high_land'),('contingency_plan','suppliers'))
     list_filter = ('pay','vhf','suppliers','created','region','distrit','high_land')
     filter = ('high_land',)
+    filter_horizontal = ('suppliers',)
     list_per_page = 25
     list_select_related = True
 
