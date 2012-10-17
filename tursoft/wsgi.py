@@ -15,8 +15,6 @@ framework.
 """
 import os
 import sys
-import site
-
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "tursoft.settings")
 
