@@ -18,14 +18,13 @@
 		<div class="clear"> </div>
 		<div class="panel principales">
 			<p> Nombre: {{ object.excurtion.name }} </p>
-			<p> Pais: {{ object.excurtion.study.country.name }} </p>
 			<p> Region: {{ object.excurtion.study.region.name }} </p>
 			<p> Provincia: {{ object.excurtion.study.distrit.name }} </p>
 			<p> Cantidad de Participantes: {{ object.get_amount_competitors }} </p>
 			<p> Desde: {{ object.excurtion.date_from }} </p>
 			<p> Hasta: {{ object.excurtion.date_to }} </p>
 			<p> Cantidad Minima de Participantes: {{ object.excurtion.min_amount }} </p>
-			<p> Alta Montania: {{ object.excurtion.study.high_land }} </p>
+			<p> Alta Montania: {% if object.excurtion.study.high_land %} Si {% else %} No {% endif %}</p>
 		</div>
 		
 		<div class="panel economicos">
