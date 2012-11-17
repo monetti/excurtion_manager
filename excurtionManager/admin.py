@@ -1,5 +1,4 @@
 from django.contrib import admin
-import django.contrib.gis.admin as geo_admin
 from models import *
 from django.contrib.gis.geos import Point
 from django import forms
@@ -17,7 +16,7 @@ def send_email(modeladmin, request, queryset):
         from_email = EMAIL_HOST_USER
                 
         subject = modeladmin.excurtion.name
-        message = ''
+        message = '' 
         
         if subject and message and from_email:
             try:
@@ -48,27 +47,18 @@ class ExcurtionAdmin(admin.ModelAdmin):
     actions_on_bottom = True
     actions_selection_counter = True
     date_hierarchy = 'created'
-    fieldsets = (
-                 ('Datos Generales',{'fields':(('name','study','min_amount'),('date_from','date_to'),'description'),'classes':['wide','extrapretty']}),
-                 ('Servicios',{'fields':('include_services','not_include_services'),'classes':['collapse','extrapretty']}),
-                 ('Actividades',{'fields':{('activities',)},'classes':['collapse','extrapretty']})
-                )
+    fields = (('name','study','min_amount','date_from','date_to'),'description',('include_services','not_include_services'),'activities',)
     list_filter = ('study__region','study__distrit','created')
     list_per_page = 25
     list_select_related = True
 
-class StudyAdmin(geo_admin.OSMGeoAdmin):
-    pnt = Point(-64, -31, srid=4326)
-    pnt.transform(900913)
-    default_lon, default_lat = pnt.coords
-    map_width = 400
-    map_height = 300
-    default_zoom = 5
+class StudyAdmin(admin.ModelAdmin):
     actions_on_top = True
     actions_on_bottom = True
     actions_selection_counter = True
     date_hierarchy = 'created'
-    fields = (('distrit','region'),('access','other_features','circuit'),('location','map'),('pay','amount_pay','vhf'),('available_from','available_to','high_land'),('contingency_plan','suppliers'))
+    #fields = (('distrit','region'),('access','other_features','circuit'),('location','map'),('pay','amount_pay','vhf'),('available_from','available_to','high_land'),('contingency_plan','suppliers'))
+    fields = (('distrit','region','available_from','available_to'),('pay','amount_pay','vhf','high_land'),'suppliers','access','other_features','contingency_plan')
     list_filter = ('pay','vhf','suppliers','created','region','distrit','high_land')
     filter = ('high_land',)
     filter_horizontal = ('suppliers',)
@@ -87,7 +77,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ('excurtion','precio_estimado','percentage','price','subtotal','subtotal_participantes','subtotal_organizacion','subtotal_comida_organizacion','subtotal_comida_participantes','costo_directo_grupal','costo_directo_individual','costo_indirecto_grupal','costo_indirecto_individual','costo_final_grupal','costo_final_individual','facturacion','utilidad','utilidad_por_participante')
     actions = [send_email] 
 
-class SupplyAdmin(geo_admin.OSMGeoAdmin):
+class SupplyAdmin(admin.ModelAdmin):
     actions_on_top = True
     actions_on_bottom = True
     actions_selection_counter = True

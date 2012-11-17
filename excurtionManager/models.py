@@ -1,10 +1,10 @@
-from django.contrib.gis.db.models.manager import GeoManager
+#from django.contrib.gis.db.models.manager import GeoManager
 from django.core.mail import send_mail
 from django.core.mail.message import BadHeaderError
 from django.db import models
 from django.http import HttpResponse, HttpResponseRedirect
 from tursoft.settings import EMAIL_HOST_USER
-import django.contrib.gis.db.models as gis_models
+#import django.contrib.gis.db.models as gis_models
 
 class Notification(models.Model):
     description = models.TextField("Descripcion")
@@ -126,14 +126,14 @@ class Excurtion(models.Model):
     def __unicode__(self):
         return self.name
     
-class Study(gis_models.Model):
-    location = gis_models.PointField("Ubicacion",blank=True,null=True)
+class Study(models.Model):
+    #location = gis_models.PointField("Ubicacion",blank=True,null=True)
     distrit = models.ForeignKey("Distrit",verbose_name='Provincia')
     access = models.TextField("Accceso", blank=True)
-    map = gis_models.PolygonField("Mapa",blank=True,null=True)
+    #map = gis_models.PolygonField("Mapa",blank=True,null=True)
     region = models.ForeignKey('Region',verbose_name='Region')
     other_features = models.TextField("Otros Atractivos", blank=True)
-    circuit =  gis_models.PolygonField("Circuito",blank=True,null=True)
+    #circuit =  gis_models.PolygonField("Circuito",blank=True,null=True)
     pay = models.BooleanField("Pago de Arancel", blank=True)
     amount_pay = models.IntegerField("Monto",default=0, blank=True)
     vhf = models.CharField("Frecuencia VHF",max_length=10,blank=True)
@@ -145,15 +145,13 @@ class Study(gis_models.Model):
     suppliers = models.ManyToManyField('Supply',verbose_name='Proveedores')
     created = models.DateField(auto_now=True,editable=False) 
     
-    objetcs = GeoManager()
-    
     def __str__(self):
         return self.region.name + " - " + self.distrit.name
     
-class Supply(gis_models.Model):
+class Supply(models.Model):
     name = models.CharField("Nombre",max_length=50)
     address = models.CharField("Direccion",max_length=50)
-    location = gis_models.PointField("Ubicacion",blank=True,null=True)
+    #location = gis_models.PointField("Ubicacion",blank=True,null=True)
     url = models.URLField("Web",blank=True)
     tel = models.CharField("Nombre",max_length=50,blank=True)
     email = models.EmailField("Email",blank=True)
@@ -161,7 +159,7 @@ class Supply(gis_models.Model):
     comments = models.TextField("Observaciones", blank=True)
     created = models.DateField(auto_now=True,editable=False)
     
-    objetcs = GeoManager()
+    #objetcs = GeoManager()
     
     def __str__(self):
         return self.name

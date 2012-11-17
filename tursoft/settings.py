@@ -12,7 +12,7 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'ENGINE': 'postgresql_psycopg2',
         'NAME': 'tursoft',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
@@ -77,7 +77,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/home/martin/android-project/tursoft/tursoft/media',
+    
     
 )
 
@@ -144,7 +144,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
-    'django.contrib.gis',
+    'psycopg2',
     'tinymce',
     'excurtionManager',
     
