@@ -153,3 +153,16 @@ ul {
     box-shadow: 0 0 15px #999;
 }
 
+#add-excurtion-form {
+	display:none;
+    width: 40em;
+    position:absolute;
+    right:0;
+    top: 3em;
+    background:#EEE;
+    padding:1em;
+    border-radius: 3px;
+    
+}
+
+

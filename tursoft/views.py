@@ -2,8 +2,8 @@ from django.contrib.auth import login as auth_login, authenticate
 from django.shortcuts import render
 from excurtionManager.models import Client, Product, Excurtion, Notification
 from tursoft.forms import UserForm
+from excurtionManager.forms import ExcurtionForm
 import datetime
-
 
 def home(request):
     if not request.user.is_anonymous():
@@ -15,6 +15,7 @@ def home(request):
                   'clients':Client.objects.all()[:10],
                   'excurtions':Excurtion.objects.all()[:10],
                   'notifications':Notification.objects.all()[:10],
+                  'form_excurtion': ExcurtionForm(),
                    }
               )
     else:
@@ -23,7 +24,6 @@ def home(request):
               'login.html',
               {}
           )
-    
     
 def login(request):
     user = authenticate(username=request.POST['user'], password=request.POST['pass'])
@@ -55,5 +55,3 @@ def register(request):
                'form':user_form
                }
           )
-    
-        

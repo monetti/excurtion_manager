@@ -12,6 +12,8 @@ class Notification(models.Model):
     
     class Meta:
         ordering = ('-created',)
+        verbose_name = "Notificacion"
+        verbose_name_plural = "Notificaciones"
 
 class TechnicNote(models.Model):
     name = models.CharField("Nombre",max_length=50)
@@ -24,12 +26,20 @@ class TechnicNote(models.Model):
     def __unicode__(self):
         return self.name
     
+    class Meta:
+        verbose_name = "Nota Tecnica"
+        verbose_name_plural = "Notas Tecnicas"
+    
 class Equipment(models.Model):
     name = models.CharField("Nombre",max_length=50)
     high_land = models.BooleanField("Alta Montania",blank=True)
     
     def __str__(self):
         return self.name
+    
+    class Meta:
+        verbose_name = "Equipamiento"
+        verbose_name_plural = "Equipamientos"
         
 class Issue(models.Model):
     name = models.CharField("Nombre",max_length=50)
@@ -41,6 +51,10 @@ class Issue(models.Model):
     
     def __unicode__(self):
         return self.name + '-' + self.type
+    
+    class Meta:
+        verbose_name = "Rubro"
+        verbose_name_plural = "Rubros"
     
 class ProductQuotation(models.Model):
     issue = models.ForeignKey('Issue',verbose_name='Rubro')
@@ -61,6 +75,10 @@ class Distrit(models.Model):
     def __unicode__(self):
         return self.name
     
+    class Meta:
+        verbose_name = "Provincia"
+        verbose_name_plural = "Provincias"
+    
 class Benefit(models.Model):
     name = models.CharField("Nombre",max_length=50)
     
@@ -70,6 +88,10 @@ class Benefit(models.Model):
     def __unicode__(self):
         return self.name
     
+    class Meta:
+        verbose_name = "Prestacion"
+        verbose_name_plural = "Prestaciones"
+    
 class Country(models.Model):
     name = models.CharField("Nombre",max_length=50)
     
@@ -78,6 +100,10 @@ class Country(models.Model):
     
     def __unicode__(self):
         return self.name
+    
+    class Meta:
+        verbose_name = "Pais"
+        verbose_name_plural = "Paises"
 
 class Client(models.Model):
     name = models.CharField("Nombre",max_length=50)
@@ -99,6 +125,10 @@ class Client(models.Model):
     def __unicode__(self):
         return self.name
     
+    class Meta:
+        verbose_name = "Cliente"
+        verbose_name_plural = "Clientes"
+    
 class Region(models.Model):
     name = models.CharField("Nombre",max_length=50)
     
@@ -107,6 +137,10 @@ class Region(models.Model):
     
     def __unicode__(self):
         return self.name
+    
+    class Meta:
+        verbose_name = "Region"
+        verbose_name_plural = "Regiones"
         
 class Excurtion(models.Model):
     name = models.CharField("Nombre",max_length=100)
@@ -125,6 +159,11 @@ class Excurtion(models.Model):
     
     def __unicode__(self):
         return self.name
+    
+    class Meta:
+        verbose_name = "Excursion"
+        verbose_name_plural = "Excursiones"
+
     
 class Study(models.Model):
     #location = gis_models.PointField("Ubicacion",blank=True,null=True)
@@ -148,6 +187,11 @@ class Study(models.Model):
     def __str__(self):
         return self.region.name + " - " + self.distrit.name
     
+    class Meta:
+        verbose_name = "Relevamiento"
+        verbose_name_plural = "Relevamientos"
+
+    
 class Supply(models.Model):
     name = models.CharField("Nombre",max_length=50)
     address = models.CharField("Direccion",max_length=50)
@@ -155,7 +199,7 @@ class Supply(models.Model):
     url = models.URLField("Web",blank=True)
     tel = models.CharField("Nombre",max_length=50,blank=True)
     email = models.EmailField("Email",blank=True)
-    benefits = models.ManyToManyField("Benefit")
+    benefits = models.ManyToManyField("Benefit",verbose_name="Prestaciones")
     comments = models.TextField("Observaciones", blank=True)
     created = models.DateField(auto_now=True,editable=False)
     
@@ -166,6 +210,11 @@ class Supply(models.Model):
     
     def __unicode__(self):
         return self.name
+    
+    class Meta:
+        verbose_name = "Proveedor"
+        verbose_name_plural = "Proveedores"
+
     
 class Product(models.Model):
     excurtion = models.ForeignKey('Excurtion',verbose_name='Excursion')

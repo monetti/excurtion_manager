@@ -76,6 +76,7 @@ urlpatterns = patterns('',
     (r'^clients/(?P<object_id>\d+)/$', 'django.views.generic.list_detail.object_detail', client_detail),
     
     (r'^excurtions/(?P<object_id>\d+)/$', 'django.views.generic.list_detail.object_detail', excurtion_detail),
+    (r'^excurtions/add/$', 'excurtionManager.views.add_excurtion'),
     (r'^excurtions/(?P<id>\w+)/delete$', 'delete', {'model':Excurtion}),
     (r'^excurtions/(?P<id>\w+)/send_email$', 'send_email', {'model':Product}),
     

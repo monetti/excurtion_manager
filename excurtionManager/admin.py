@@ -51,7 +51,7 @@ class ExcurtionAdmin(admin.ModelAdmin):
     list_filter = ('study__region','study__distrit','created')
     list_per_page = 25
     list_select_related = True
-
+    
 class StudyAdmin(admin.ModelAdmin):
     actions_on_top = True
     actions_on_bottom = True
@@ -85,6 +85,7 @@ class SupplyAdmin(admin.ModelAdmin):
     list_filter = ('benefits','created')
     list_per_page = 25
     list_select_related = True
+    filter_horizontal = ('benefits',)
 
 class ClientAdmin(admin.ModelAdmin):
     actions_on_top = True
@@ -120,6 +121,6 @@ admin.site.register(Country)
 admin.site.register(Distrit)
 admin.site.register(Region)
 admin.site.register(Issue)
-admin.site.register(ProductQuotation)
-admin.site.register(Product,ProductAdmin)
+#admin.site.register(ProductQuotation)
+#admin.site.register(Product,ProductAdmin)
 admin.site.register(TechnicNote, TechnicNoteAdmin)

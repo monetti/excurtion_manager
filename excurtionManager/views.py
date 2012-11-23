@@ -6,7 +6,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect, \
     render_to_response
 from django.utils.html import escape
-from excurtionManager.forms import ProductQuotationForm
+from excurtionManager.forms import ProductQuotationForm, ExcurtionForm
 from models import Product
 from tursoft.settings import EMAIL_HOST_USER
 
@@ -30,6 +30,13 @@ def cotizar(request, id):
                     product.save()
     
     return redirect("/products/"+id)
+
+def add_excurtion(request):
+    if request.method == "POST":
+        form = ExcurtionForm(request.POST)
+        if form.is_valid():
+            obj = form.save()
+    return redirect("/")
 
 def product_quotation_add_to_product(request):
     if request.method == "POST":
