@@ -1,0 +1,30 @@
+<html>
+<head>
+
+<title> {% block title %} Excurtion Manager v1.0 {% endblock %}</title>
+<link rel="stylesheet" href="/media/css/style.css" type="text/css" media="screen" />
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.ui.js"></script>
+<script type="text/javascript" src="/static/js/scripts.js"></script>
+{% block javascript %}
+	
+{% endblock %}
+</head>
+<body>
+<div id="header"> <h1>Excurtion Manager v1.0</h1> </div>
+<div id="content">
+<div id="titulo_modulo">
+{% block modulo_tablero%}
+
+{% endblock %}
+</div>
+
+{% block content %}
+
+{% endblock %}
+</div>
+<div id="bottom"></div>
+
+</body>
+
+</html>
